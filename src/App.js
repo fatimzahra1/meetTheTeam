@@ -1,38 +1,63 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
-import User from './components/users/User';
-import Alert from './components/layout/Alert';
-import Home from './components/pages/Home';
-import About from './components/pages/About';
-import NotFound from './components/pages/NotFound';
 
-import GithubState from './context/github/GithubState';
-import AlertState from './context/alert/AlertState';
+import Navbar from './components/layout/headerUsers';
+
+
+import Users from './components/users/Users';
+
+import { useState,useEffect } from 'react';
+
+
+
 
 import './App.css';
+const axios = require('axios');
 
 const App = () => {
+  const [usersList, setUsersList] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [userStyle, setUserStyle] = useState(true)
+  const [sorted, setSorted] = useState(false)
+  
+  useEffect(() => {
+    setUsersList(usersList)
+  }, [sorted])
+ 
+  useEffect( () => {
+    async function fetchData() {
+    const result = await axios(
+      'https://randomuser.me/api/?results=50',
+    );
+
+    console.log(result.data.results)
+    setUsersList(result.data.results)
+    setLoading(false)}
+    fetchData();
+  }, []);
+  const changeTheStyle = ()=>{setUserStyle(!userStyle)
+  }
+
+  const setSearchedArray = (newArray)=>setUsersList(newArray)
+  const setSortedArray = (sortedArray)=>{setUsersList(sortedArray)
+  setSorted(!sorted)}
+  
+
   return (
-    <GithubState>
-      <AlertState>
-        <Router>
+    <div>
+      <h1>Meet the team</h1>
+  <Navbar sorted={sorted} setSortedArray={setSortedArray} setSearchedArray={setSearchedArray} usersList={usersList} changeTheStyle= {changeTheStyle} userStyle={userStyle}/>
           <div className='App'>
-            <Navbar />
+            <Users userStyle={userStyle} usersList={usersList}  loading= {loading}
+            />
             <div className='container'>
-              <Alert />
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/about' component={About} />
-                <Route exact path='/user/:login' component={User} />
-                <Route component={NotFound} />
-              </Switch>
+             
+              
             </div>
           </div>
-        </Router>
-      </AlertState>
-    </GithubState>
+        
+          </div>
   );
+ 
 };
 
 export default App;

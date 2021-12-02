@@ -36,9 +36,7 @@ ul {
   list-style: none;
 }
 
-img {
-  width: 100%;
-}
+
 
 /* Utilities */
 .container {
@@ -111,10 +109,25 @@ img {
 
 /* Cards */
 .card {
-  padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
-}
+  
+  margin: auto;
+  top: 0;
+
+  width: 250px;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px 5px rgba(240, 237, 237, 0.966);
+  background: white;
+  overflow: hidden;}
+  .ds-top {
+   
+    width: 300px;
+    height: 80px;
+    background: #9c7b82;
+    animation: dsTop 1.5s;
+  }
+ 
+
 
 /* List */
 .list {
@@ -236,6 +249,15 @@ img {
   color: #333;
   border-radius: 5px;
 }
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
 
 .alert {
   padding: 0.7rem;
@@ -243,6 +265,20 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+}
+.arrows{
+
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+  
+}
+.arrow {
+  height: 100%;
+  text-align: center;
+}
+.arrow:hover {
+  transform: scale(1.5)
 }
 
 .btn-primary,
