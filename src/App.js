@@ -18,11 +18,15 @@ const App = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios("https://randomuser.me/api/?results=50");
+      try{
+        const result = await axios("https://randomuser.me/api/?results=50");
 
-      console.log(result.data.results);
-      setUsersList(result.data.results);
-      setLoading(false);
+        console.log(result.data.results);
+        setUsersList(result.data.results);
+        setLoading(false);
+      }catch(error){
+        console.log(error)
+      }
     }
     fetchData();
   }, []);
