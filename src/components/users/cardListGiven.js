@@ -35,7 +35,7 @@ const CardListGiven = ({
             src={picture.large}
             alt=""
             className="round-img"
-            style={{ width: "60px" }}
+           
           />
         </div>
         <div className="contact-name">
