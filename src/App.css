@@ -535,14 +535,15 @@ textarea {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-left: 90px;
-    max-width: 250px;
+    margin-left: 20px;
+    width: 300px;
   }
   .arrows{
     width: 20px;
     height:20px;
     margin-right: 20px;
   }
+
   .arrow{
     width: inherit;
     height: inherit;
@@ -675,12 +676,15 @@ textarea {
     margin-top: 70px;
     margin-left: 0px;
   }
-
+  #root{
+    width: 300px;
+  }
   body {
     font-family: 'Inconsolata', monospace;
     background-color: #eee9e9;
     align-items: center;
     overflow-x: hidden !important;
+    width: 300px;
   }
 
   .hide-sm {
@@ -712,7 +716,7 @@ textarea {
   .navbar {
     display: inline-flex;
     text-align: center;
-
+    width: fit-content;
   }
 
   /*list media */
